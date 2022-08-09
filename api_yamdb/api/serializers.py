@@ -1,10 +1,10 @@
 from django.utils import timezone
-from users.models import User
-from reviews.models import Category, Comment, Genre, Review, Title
 from rest_framework import permissions, serializers
 from rest_framework.exceptions import ValidationError
-from rest_framework.validators import UniqueValidator
 from rest_framework.generics import get_object_or_404
+from rest_framework.validators import UniqueValidator
+from reviews.models import Category, Comment, Genre, Review, Title
+from users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -1,21 +1,16 @@
+from api.filters import GenreFilterSet
+from api.mixins import CreateListDeleteViewSet
+from api.permissions import (AdminOrReadOnly, IsAdminModeratorOwnerOrReadOnly,
+                             IsAdminOrReadOnly)
+from api.serializers import (CategorySerializer, CommentSerializer,
+                             GenreSerializer, ReviewSerializer,
+                             TitleReadSerializer, TitleWriteSerializer)
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, viewsets
 from rest_framework.pagination import LimitOffsetPagination
-from django_filters.rest_framework import DjangoFilterBackend
-
-from reviews.models import Category, Genre, Title, Review
-from api.serializers import (CategorySerializer,
-                             GenreSerializer,
-                             TitleWriteSerializer,
-                             TitleReadSerializer,
-                             ReviewSerializer,
-                             CommentSerializer)
-from api.permissions import (AdminOrReadOnly,
-                             IsAdminOrReadOnly,
-                             IsAdminModeratorOwnerOrReadOnly)
-from api.mixins import CreateListDeleteViewSet
-from api.filters import GenreFilterSet
+from reviews.models import Category, Genre, Review, Title
 
 
 class CategoryViewSet(CreateListDeleteViewSet):
