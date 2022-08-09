@@ -42,7 +42,7 @@ jobs:
         uses: actions/checkout@v2 
       - name: Set up Docker Buildx
         # Вызов сборщика контейнеров docker
-        uses: api_yamdb/docker/setup-buildx-action@v1 
+        uses: docker/setup-buildx-action@v1 
       - name: Login to Docker 
         # Запуск скрипта авторизации на DockerHub
         uses: api_yamdb/docker/login-action@v1 
