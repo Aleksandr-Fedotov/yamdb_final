@@ -6,8 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-  workflow_dispatch:
-
 jobs:
 
   tests:
@@ -38,13 +36,10 @@ jobs:
     needs: tests
     steps:
       - name: Check out the repo
-        # Проверка доступности репозитория Docker Hub для workflow
         uses: actions/checkout@v2 
       - name: Set up Docker Buildx
-        # Вызов сборщика контейнеров docker
         uses: docker/setup-buildx-action@v1 
       - name: Login to Docker 
-        # Запуск скрипта авторизации на DockerHub
         uses: docker/login-action@v1 
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -67,24 +62,19 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
-        # LC ~/.ssh/id_rsa '--- SSH ... ---'
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
         script: |
-          ## Выполняет pull образа с DockerHub
-          # sudo docker pull fedotovaccount/api_yamdb_final:latest
-          ## остановка всех контейнеров
-          # sudo docker stop $(sudo docker ps -a -q)
-          # sudo docker run --rm -d -p 8000:8000 fedotovaccount/api_yamdb_final:latest
           sudo docker-compose stop
           sudo docker-compose rm web
+          sudo systemctl stop nginx
           sudo touch .env
-          sudo echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
-          sudo echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-          sudo echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-          sudo echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-          sudo echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-          sudo echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+          echo 'DB_ENGINE=${{ secrets.DB_ENGINE }}' | sudo tee .env
+          echo 'DB_NAME=${{ secrets.DB_NAME }}' | sudo tee --append .env
+          echo 'POSTGRES_USER=${{ secrets.POSTGRES_USER }}' | sudo tee --append .env
+          echo 'POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}' | sudo tee --append .env
+          echo 'DB_HOST=${{ secrets.DB_HOST }}' | sudo tee --append .env
+          echo 'DB_PORT=${{ secrets.DB_PORT }}' | sudo tee --append .env
           sudo docker-compose up -d
 
   send_message:
