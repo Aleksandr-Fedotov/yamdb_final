@@ -70,11 +70,6 @@ jobs:
           sudo systemctl stop nginx
           sudo touch .env
           echo 'DB_ENGINE=${{ secrets.DB_ENGINE }}' | sudo tee .env
-          echo 'DB_NAME=${{ secrets.DB_NAME }}' | sudo tee -a .env
-          echo 'POSTGRES_USER=${{ secrets.POSTGRES_USER }}' | sudo tee -a .env
-          echo 'POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}'' | sudo tee -a .env
-          echo 'DB_HOST=${{ secrets.DB_HOST }}' | sudo tee -a .env
-          echo 'DB_PORT=${{ secrets.DB_PORT }}' | sudo tee -a .env
           sudo docker-compose up -d
 
   send_message:
