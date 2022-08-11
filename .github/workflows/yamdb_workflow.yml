@@ -81,8 +81,8 @@ jobs:
           sudo systemctl stop nginx
           sudo touch .env
           echo 'DB_ENGINE=${{ secrets.DB_ENGINE }}' | sudo tee .env
-          sudo echo DB_NAME=${{ secrets.DB_NAME }} >> .env
-          sudo echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+          echo 'DB_NAME=${{ secrets.DB_NAME }}' | sudo tee .env
+          echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
           sudo echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
           sudo echo DB_HOST=${{ secrets.DB_HOST }} >> .env
           sudo echo DB_PORT=${{ secrets.DB_PORT }} >> .env
