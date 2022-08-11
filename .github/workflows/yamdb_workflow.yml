@@ -78,6 +78,7 @@ jobs:
           # sudo docker run --rm -d -p 8000:8000 fedotovaccount/api_yamdb_final:latest
           sudo docker-compose stop
           sudo docker-compose rm web
+          sudo systemctl stop nginx
           sudo touch .env
           sudo echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
           sudo echo DB_NAME=${{ secrets.DB_NAME }} >> .env
