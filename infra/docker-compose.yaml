@@ -11,9 +11,7 @@ services:
     networks:
       - djangonetwork
   web:
-    # Использую изображение DockerHub
     image: fedotovaccount/api_yamdb_final:latest
-    # build: ../api_yamdb
     restart: always
     volumes:
       - static_value:/app/static/

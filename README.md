@@ -1,5 +1,4 @@
-![example workflow](https://github.com/Aleksandr-Fedotov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
-
+![workflow](https://github.com/Aleksandr-Fedotov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 # Сервис YaMDb
 
@@ -11,64 +10,33 @@
 ## Технологии
 
 - Django rest_framework
-- Django rest_framework_simplejwt
-- Django django_filters
 - Git
+- GitHub Action
 - Docker
 - NGINX
 
 
 ## Начало работы
 
-Для начала клонируйте репозиторий и перейдите в него выполнив команды в командной строке:
+Сделайте форк репозитория.
+Клонируйте репозиторий и перейдите в него выполнив команды в командной строке:
 
 ```sh
-git clone https://github.com/Aleksandr-Fedotov/infra_sp2
-cd infra_sp2/
-```
-
-
-## Шаблон наполнения .env-файла
-
-Чтобы настроить переменные окружения для работы с базой данных пройдите из корневой папки проекта до соответствующего файла `/infra/.env`:
-
-```sh
-DB_NAME=<postgres>
-# имя базы данных
-POSTGRES_USER=<user>
-# логин для подключения к базе данных
-POSTGRES_PASSWORD=<password>
-# пароль для подключения к БД
-DB_HOST=<db>
-# название сервиса (контейнера)
-DB_PORT=<5432>
-# порт для подключения к БД 
+git clone https://github.com/Aleksandr-Fedotov/yamdb_fianl
+cd yamdb_fianl/
 ```
 
 
 ## Как запустить проект:
 
-Перейти из корневой директории в `infra/` и запустить **docker-compose**:
+При пуше проета на ***GitHub*** автоматически запустится цепочка процессов по тестированию, пушу на ***DockerHub*** и деплою проекта.
 
-```sh
-cd infra/
-docker-compose up -d --build
-```
+При успешном завершении всех шагов на телеграмм придет уведомление об успешном выполнении задач, а проект будет доступен по адресу: 
+http://158.160.3.124/api/v1/
 
-В контейнере **web** выполнить миграции и собрать статику:
+Для того чтбы настроить Telegram-уведомление измените значения секретных ключей **TELEGRAM_TO** и **TELEGRAM_TOKEN** на *ID* вашего аккаунта и *token* вашего telegram-бота соответственно.
 
-```sh
-docker-compose exec web python manage.py migrate
-docker-compose exec web python manage.py collectstatic --no-input
-```
-
-Для создания суперпользователя:
-
-```sh
-[winpty] docker-compose exec web python manage.py createsuperuser
-```
-
-После запуска контейнеров можно ознакомится с документацией по проекту, в которой описана основная логика приложения, документация доступна по ссылке: http://localhost/redoc/
+Документация проекта, в которой описана основная логика приложения, по ссылке: http://158.160.2.134/redoc/
 
 
 ## Как загрузить данные в проект:
@@ -232,5 +200,5 @@ docker exec <container_ID> python manage.py loaddata /reviews/fixtures/fixtures.
 - *Aleksandr-Fedotov*
 - *Margarita-pyth*
 
-**Контейнеризация:**
+**Контейнеризация и workflow:**
 - *Aleksandr-Fedotov*
