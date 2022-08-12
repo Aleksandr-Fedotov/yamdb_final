@@ -1,4 +1,4 @@
-![workflow](https://github.com/Aleksandr-Fedotov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
+(https://github.com/Aleksandr-Fedotov/yamdb_final/actions/workflows/yamdb_workflow.yml)
 
 # Сервис YaMDb
 
@@ -22,8 +22,8 @@
 Клонируйте репозиторий и перейдите в него выполнив команды в командной строке:
 
 ```sh
-git clone https://github.com/Aleksandr-Fedotov/yamdb_fianl
-cd yamdb_fianl/
+git clone https://github.com/Aleksandr-Fedotov/yamdb_final
+cd yamdb_final/
 ```
 
 
