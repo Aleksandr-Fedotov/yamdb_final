@@ -1,4 +1,4 @@
-!(https://github.com/Aleksandr-Fedotov/yamdb_final/actions/workflows/yamdb_workflow.yml)
+![example workflow](https://github.com/Aleksandr-Fedotov/yamdb_final/actions/workflows/yamdb_workflow.yml)
 
 # Сервис YaMDb
 
